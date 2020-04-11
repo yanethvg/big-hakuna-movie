@@ -1,7 +1,7 @@
 import {
     COMENZAR_DESCARGA_PELICULAS,
     DESCARGA_PELICULAS_EXITOSA,
-    DESCARGA_PELICULAS_ERROR
+    DESCARGA_PELICULAS_ERROR,
 } from '../types';
 
 //obtener listado de productos( consultar API )
@@ -9,16 +9,15 @@ export function obtenerPeliculasActions(){
     return (dispatch) => {
         dispatch(comenzarDescargaPeliculas());
         //consultando a la api
-        fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=510e5395ceb2e557cf3fb72141932029&language=en-US&page=1')
+        fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=510e5395ceb2e557cf3fb72141932029&language=en-US')
         .then(function(response) {
             return response.json();
         })
         .then(function(response) {
-            console.log(response.results);
-            dispatch(descargaPeliculasExitosa(response.results));
+            dispatch(descargaPeliculasExitosa(response.results.slice(0,5)));
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
             dispatch(descargaPeliculasError());
         });
     }

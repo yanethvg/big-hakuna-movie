@@ -1,12 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Peliculas from "./components/Peliculas";
+import Inicio from "./components/Inicio";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 const App = () => (
   <Router>
-    <Switch>
-      <Route exact path="/" component={Peliculas}></Route>
-    </Switch>
+    <div id="shell">
+      <Header></Header>
+      <Switch>
+        <Route exact path="/" component={Inicio}></Route>
+      </Switch>
+      <Footer></Footer>
+      </div>
   </Router>
 );
 

@@ -1,12 +1,12 @@
 import {
-    COMENZAR_DESCARGA_PELICULAS,
-    DESCARGA_PELICULAS_EXITOSA,
-    DESCARGA_PELICULAS_ERROR,
+    COMENZAR_DESCARGA_PELICULAS_ALL,
+    DESCARGA_PELICULAS_EXITOSA_ALL,
+    DESCARGA_PELICULAS_ERROR_ALL,
 } from '../types';
 
 //cada reducer tiene su propio state
 const initialState ={
-    peliculasOcurrentes:[],
+    peliculas:[],
     error:null,
     loading: false,
     pelicula: {}
@@ -14,25 +14,25 @@ const initialState ={
 
 export default function(state=initialState,action){
     switch (action.type) {
-        case COMENZAR_DESCARGA_PELICULAS:
+        case COMENZAR_DESCARGA_PELICULAS_ALL:
             return{
                 ...state,
                 error:null,
                 loading: true,
                 pelicula:{},
             }
-        case DESCARGA_PELICULAS_EXITOSA:
+        case DESCARGA_PELICULAS_EXITOSA_ALL:
             return{
                 ...state,
-                peliculasOcurrentes: action.payload,
+                peliculas: action.payload,
                 error:false,
                 loading: false,
                 pelicula:{}
             }
-        case DESCARGA_PELICULAS_ERROR:
+        case DESCARGA_PELICULAS_ERROR_ALL:
             return{
                 ...state,
-                peliculasOcurrentes: [],
+                peliculas: [],
                 error: true,
                 loading: false,
                 pelicula:{}
