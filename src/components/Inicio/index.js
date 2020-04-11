@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { obtenerPeliculasActions } from '../../actions/obtenerPeliculasActions';
 import Spinner from '../Spinner';
 import Pelicula from '../Peliculas/Pelicula';
+import { Link } from 'react-router-dom'
 
 const Inicio= () => {
     // Mandar llamar a la acción principal para retornar los peliculas
@@ -19,8 +20,7 @@ const Inicio= () => {
     const loading = useSelector(state => state.peliculasReducer.loading);
     const error = useSelector(state => state.peliculasReducer.error);
     const peliculas = useSelector(state => state.peliculasReducer.peliculasOcurrentes);
-    console.log(peliculas);
-
+    //console.log(peliculas);
     
     const componente = (loading) ? <Spinner></Spinner> : null;
     return (
@@ -41,7 +41,7 @@ const Inicio= () => {
                             ></Pelicula>
                             ))}
                         </div>
-                        <button type="button" className="btn btn-primary btn-lg btn-block mt-5">Movies</button>
+                        <Link  to={'/movies'}  type="button" className="btn btn-primary btn-lg btn-block mt-5">More Movies</Link>
                     </div>
                 </div>
             </div>

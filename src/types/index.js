@@ -6,4 +6,4 @@ export const COMENZAR_DESCARGA_PELICULAS_ALL = 'COMENZAR_DESCARGA_PELICULAS_ALL'
 export const DESCARGA_PELICULAS_EXITOSA_ALL = 'DESCARGA_PELICULAS_EXITOSA_ALL';
 export const DESCARGA_PELICULAS_ERROR_ALL = 'DESCARGA_PELICULAS_ERROR_ALL';
 
-export const URL_BASE_IMG = 'https://image.tmdb.org/t/p/w200';
+export const URL_BASE_IMG = 'https://image.tmdb.org/t/p/w500';

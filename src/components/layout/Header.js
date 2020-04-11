@@ -13,7 +13,7 @@ const Header = () => {
             <Link to={'/'} className="nav-link">Home <span className="sr-only">(current)</span></Link>
           </li>
           <li className="nav-item">
-            <Link to={'/'} className="nav-link">Buy<span className="sr-only">(current)</span></Link>
+            <Link to={'/movies'} className="nav-link">Movies<span className="sr-only">(current)</span></Link>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">
