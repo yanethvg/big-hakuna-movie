@@ -16,7 +16,7 @@ const Render = ({ peliculas }) => {
         comienzo = comienzo +4;
         final = final + 4;
     }
-    console.log(peliculasSlice);
+    //console.log(peliculasSlice);
     return (
         <React.Fragment>
             {peliculasSlice.map(peliculas => (

@@ -21,7 +21,6 @@ const Inicio= () => {
     const error = useSelector(state => state.peliculasReducer.error);
     const peliculas = useSelector(state => state.peliculasReducer.peliculasOcurrentes);
     //console.log(peliculas);
-    
     const componente = (loading) ? <Spinner></Spinner> : null;
     return (
         <React.Fragment>

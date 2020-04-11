@@ -12,7 +12,7 @@ const Pagination = ({ peliculasPerPage, totalPeliculas, paginate }) => {
       <ul className='pagination  justify-content-center mt-5'>
         {pageNumbers.map(number => (
            <li key={number} className='page-item mx-1'>
-           <Link onClick={() => paginate(number)} className='btn btn-secondary'>
+           <Link to="/movies" onClick={() => paginate(number)} className='btn btn-secondary'>
              {number}
            </Link>
           </li>
