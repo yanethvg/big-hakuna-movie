@@ -11,23 +11,47 @@ const Peliculas = () => {
     //state locales
     const [currentPage, setCurrentPage] = useState(1);
     const [peliculasPerPage] = useState(12);
+    //cargar las peliculas del localstorage como state inicial
+    let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
+
+    if (!peliculasIniciales) {
+        peliculasIniciales = []
+    }
+   const [peliculas, savePeliculas] = useState(peliculasIniciales)
     const dispatch = useDispatch();
     useEffect(
         () => {
             //peliculas cuando el componente este listo
             const cargarpeliculas = () => dispatch(obtenerPeliculasAllActions());
             cargarpeliculas();
-        }, [dispatch]
+            //ESTO ES PARA STORAGE
+            let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
+
+            if (peliculasIniciales) {
+                localStorage.setItem('peliculas', JSON.stringify(peliculas))
+            } else {
+                localStorage.setItem('peliculas', JSON.stringify([]))
+            }
+        }, [dispatch,peliculas]
     );
+
+    function crearInstancia(instancia) {
+        //Tomar una copia del state y agregar el nuevo paciente
+        const nuevasPeliculas = [...peliculas, instancia]
+        //almacenar en el state
+        savePeliculas(nuevasPeliculas)
+        console.log(nuevasPeliculas);
+    }
+
     //Acceder al state
     const loading = useSelector(state => state.peliculasAllReducer.loading);
     const error = useSelector(state => state.peliculasAllReducer.error);
-    const peliculas = useSelector(state => state.peliculasAllReducer.peliculasAll);
+    const peliculasPop = useSelector(state => state.peliculasAllReducer.peliculasAll);
     //console.log(peliculas);
     // Get current movies
     const indexOfLastPelicula = currentPage * peliculasPerPage;
     const indexOfFirstPelicula = indexOfLastPelicula - peliculasPerPage;
-    const currentPeliculas = peliculas && peliculas.slice(indexOfFirstPelicula, indexOfLastPelicula);
+    const currentPeliculas = peliculasPop && peliculasPop.slice(indexOfFirstPelicula, indexOfLastPelicula);
 
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -42,10 +66,10 @@ const Peliculas = () => {
                 <div className="row">
                     <div className="col">
                         <h3>Popular Movies</h3>
-                        <Render peliculas={currentPeliculas} ></Render>
+                        <Render peliculas={currentPeliculas} crearInstancia={crearInstancia}></Render>
                         <Pagination
                             peliculasPerPage={peliculasPerPage}
-                            totalPeliculas={peliculas.length}
+                            totalPeliculas={peliculasPop.length}
                             paginate={paginate}
                             page={'/moviespop'}
                         />

@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import img from '../image/cart.png'
 import img2 from '../image/curso1.jpg';
 import './Carrito.css'
+
 const Carrito = () => {
+
+    //cargar las peliculas del localstorage como state inicial
+    let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'));
+
+    if (!peliculasIniciales) {
+        peliculasIniciales = [];
+    }
+    const [peliculas, savePeliculas] = useState(peliculasIniciales);
+
+    //esto es como component didmount o didupdate
+    useEffect(
+        () => {
+            let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'));
+
+            if (peliculasIniciales) {
+                localStorage.setItem('peliculas', JSON.stringify(peliculas));
+            } else {
+                localStorage.setItem('peliculas', JSON.stringify([]));
+            }
+        }, [peliculas]
+    )
+    console.log(peliculas);
     return (
         <React.Fragment>
             <div className="carrito-compras">
@@ -19,15 +42,15 @@ const Carrito = () => {
                         <tbody>
                             <tr>
                                 <td>
-                                    <img src={img2} alt="" width="90"/>
+                                    <img src={img2} alt="" width="90" />
                                 </td>
                                 <td>CSS Grid y Flexbox Construye + 10 Proyectos</td>
                                 <td>$15</td>
                             </tr>
                         </tbody>
                     </table>
-                    <a href="/" class="btn button-custom-vaciar btn-block">Empty Cart</a>
-                    <a href="/" class="btn button-custom btn-block">Place Orders</a>
+                    <a href="/" className="btn button-custom-vaciar btn-block">Empty Cart</a>
+                    <a href="/" className="btn button-custom btn-block">Place Orders</a>
                 </div>
             </div>
         </React.Fragment>

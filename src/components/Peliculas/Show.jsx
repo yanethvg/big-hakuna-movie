@@ -22,7 +22,7 @@ const Show = ({ history, match }) => {
     const loading = useSelector(state => state.peliculaReducer.loading);
     const error = useSelector(state => state.peliculaReducer.error);
     const pelicula = useSelector(state => state.peliculaReducer.pelicula);
-    //console.log(pelicula);
+   
     const componente = (loading) ? <Spinner></Spinner> : null;
     const imagenPost = pelicula.poster_path ? `${URL_BASE_IMG}${pelicula.poster_path}` : 'https://via.placeholder.com/500?text=No+Image';
     //si se encuentran los generos
@@ -63,6 +63,7 @@ const Show = ({ history, match }) => {
         return starPercentageRounded;
     }
 
+
     return (
         <React.Fragment>
             {error
@@ -74,7 +75,7 @@ const Show = ({ history, match }) => {
                     <div className="container ">
                         <div className="row  my-5">
                             <div className="col-md-6">
-                                <img src={imagenPost ? imagenPost : 'https://via.placeholder.com/500?text=No+Image'} alt="" />
+                                <img src={imagenPost} alt="" />
                                 <div className="row mt-4">
                                         <div className="col-sm-6">
                                             <h3>Popularity</h3>

@@ -9,6 +9,13 @@ import img from '../image/found.png';
 
 const Peliculas = () => {
     // Mandar llamar a la acción principal para retornar los peliculas
+    //cargar las peliculas del localstorage como state inicial
+    let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
+
+    if (!peliculasIniciales) {
+        peliculasIniciales = []
+    }
+    const [peliculas, savePeliculas] = useState(peliculasIniciales)
     //state locales
     const [currentPage, setCurrentPage] = useState(1);
     const [peliculasPerPage] = useState(12);
@@ -19,17 +26,34 @@ const Peliculas = () => {
             //peliculas cuando el componente este listo
             const cargarpeliculas = () => dispatch(obtenerPeliculasBusquedaActions(query))
             cargarpeliculas();
-        }, [dispatch,query]
+            //ESTO ES PARA STORAGE
+            let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
+
+            if (peliculasIniciales) {
+                localStorage.setItem('peliculas', JSON.stringify(peliculas))
+            } else {
+                localStorage.setItem('peliculas', JSON.stringify([]))
+            }
+        }, [dispatch, query, peliculas]
     );
+
+    function crearInstancia(instancia) {
+        //Tomar una copia del state y agregar el nuevo paciente
+        const nuevasPeliculas = [...peliculas, instancia]
+        //almacenar en el state
+        savePeliculas(nuevasPeliculas)
+        console.log(nuevasPeliculas);
+    }
+
     //Acceder al state
     const loading = useSelector(state => state.peliculasBusquedaReducer.loading);
     const error = useSelector(state => state.peliculasBusquedaReducer.error);
-    const peliculas = useSelector(state => state.peliculasBusquedaReducer.peliculas);
+    const peliculasBusqueda = useSelector(state => state.peliculasBusquedaReducer.peliculas);
     //console.log(peliculas);
     // Get current movies
     const indexOfLastPelicula = currentPage * peliculasPerPage;
     const indexOfFirstPelicula = indexOfLastPelicula - peliculasPerPage;
-    const currentPeliculas = peliculas && peliculas.slice(indexOfFirstPelicula, indexOfLastPelicula);
+    const currentPeliculas = peliculasBusqueda && peliculasBusqueda.slice(indexOfFirstPelicula, indexOfLastPelicula);
 
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -43,24 +67,24 @@ const Peliculas = () => {
             <div className="container mt-5">
                 <h3>All Movies</h3>
                 <form className="row mb-2 justify-content-center">
-                        <div className="col-sm-8">
-                            <input className='search form-control'  type="text"   placeholder="Search" aria-label="Search" 
-                            onChange={e => saveQuery(e.target.value)}/>
-                        </div>
+                    <div className="col-sm-8">
+                        <input className='search form-control' type="text" placeholder="Search" aria-label="Search"
+                            onChange={e => saveQuery(e.target.value)} />
+                    </div>
                 </form>
                 <div className="row">
                     <div className="col">
-                    {(peliculas.length  === 0 && !loading )
-                    && 
-                    <div className="text-center">
-                        <img src={img} alt="" /><br/>
+                        {(peliculasBusqueda.length === 0 && !loading)
+                            &&
+                            <div className="text-center">
+                                <img src={img} alt="" /><br />
                         Not Found
                     </div>
-                    }
-                        <Render peliculas={currentPeliculas} ></Render>
+                        }
+                        <Render peliculas={currentPeliculas} crearInstancia={crearInstancia}></Render>
                         <Pagination
                             peliculasPerPage={peliculasPerPage}
-                            totalPeliculas={peliculas.length}
+                            totalPeliculas={peliculasBusqueda.length}
                             paginate={paginate}
                             page={'/moviesquery'}
                         />

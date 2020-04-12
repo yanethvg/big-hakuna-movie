@@ -2,7 +2,18 @@ import React from 'react';
 import { URL_BASE_IMG} from '../../types';
 import { Link } from 'react-router-dom'
 
-const Pelicula = ({ pelicula }) => {
+const Pelicula = ({ pelicula,crearInstancia }) => {
+   // console.log(crearInstancia);
+    const guardarReferencia = (pelicula) => {
+        crearInstancia(
+            {
+                id: pelicula.id,
+                img: pelicula.poster_path,
+                precio: 10,
+                titulo: pelicula.title 
+            }
+        );
+    }
     return (
         <React.Fragment>
             <div className="card border-dark" style={{boxShadow: '10px 10px 5px grey'}}>
@@ -15,7 +26,7 @@ const Pelicula = ({ pelicula }) => {
                     <p className="card-text">{pelicula.overview.substring(0, 50)}...</p>
                     <p className="card-text"><small className="text-muted">Release: {pelicula.release_date}</small></p>
                 </div>
-                <Link to={'/'} type="button" className="btn btn-outline-danger my-2 mx-2">Rent</Link>
+                <button type="button" className="btn btn-outline-danger my-2 mx-2" onClick={() => guardarReferencia(pelicula)} >Rent</button>
                 <Link to={`/movies/${pelicula.id}`} type="button" className="btn btn-outline-dark my-2 mx-2">See More</Link>
             </div>
         </React.Fragment>

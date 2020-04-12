@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Carrito from '../Carrito';
+
 const Header = () => {
   return (
     <nav className=" navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,7 +26,7 @@ const Header = () => {
           </li>
         </ul>
         <div className="my-2 my-lg-0">
-          <Carrito></Carrito>
+          <Carrito ></Carrito>
         </div>
       </div>
       </div>
