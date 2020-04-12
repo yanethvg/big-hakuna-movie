@@ -2,7 +2,7 @@ import React from 'react';
 import Pelicula from './Pelicula';
 import { v4 as uuidv4 } from 'uuid';
 
-const Render = ({ peliculas }) => {
+const Peliculas = ({ peliculas }) => {
     const totalPeliculas = peliculas.length;
     let comienzo = 0;
     let final =4;
@@ -33,4 +33,4 @@ const Render = ({ peliculas }) => {
     )
 }
 
-export default Render;
+export default Peliculas;

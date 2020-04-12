@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerPeliculasAllActions } from '../../actions/obtenerPeliculasAllActions';
 import Spinner from '../Spinner';
-import Render from '../Peliculas/Render';
+import Render from '../Peliculas';
 import Pagination from '../Peliculas/Pagination';
 
 const Peliculas = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { URL_BASE_IMG, URL_BASE_IMG_DESCRIPCION } from '../../types';
+import { URL_BASE_IMG} from '../../types';
 import { Link } from 'react-router-dom'
 
 const Pelicula = ({ pelicula }) => {

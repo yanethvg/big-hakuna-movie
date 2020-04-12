@@ -25,6 +25,5 @@ export const DESCARGA_PELICULA_ERROR = 'DESCARGA_PELICULA_ERROR';
 
 //para consultar las imagenes de peliculas
 export const URL_BASE_IMG = 'https://image.tmdb.org/t/p/w500';
-export const URL_BASE_IMG_DESCRIPCION = 'https://image.tmdb.org/t/p/w300';
 
 
