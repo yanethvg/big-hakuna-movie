@@ -3,15 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerPeliculasAllActions } from '../../actions/obtenerPeliculasAllActions';
 import Spinner from '../Spinner';
-import Render from './Render';
-import Pagination from './Pagination';
+import Render from '../Peliculas/Render';
+import Pagination from '../Peliculas/Pagination';
 
 const Peliculas = () => {
     // Mandar llamar a la acción principal para retornar los peliculas
     //state locales
     const [currentPage, setCurrentPage] = useState(1);
     const [peliculasPerPage] = useState(12);
-
     const dispatch = useDispatch();
     useEffect(
         () => {
@@ -23,17 +22,16 @@ const Peliculas = () => {
     //Acceder al state
     const loading = useSelector(state => state.peliculasAllReducer.loading);
     const error = useSelector(state => state.peliculasAllReducer.error);
-    const peliculas = useSelector(state => state.peliculasAllReducer.peliculas);
+    const peliculas = useSelector(state => state.peliculasAllReducer.peliculasAll);
     //console.log(peliculas);
-
-    // Get current posts
+    // Get current movies
     const indexOfLastPelicula = currentPage * peliculasPerPage;
     const indexOfFirstPelicula = indexOfLastPelicula - peliculasPerPage;
-    const currentPeliculas = peliculas.slice(indexOfFirstPelicula, indexOfLastPelicula);
+    const currentPeliculas = peliculas && peliculas.slice(indexOfFirstPelicula, indexOfLastPelicula);
 
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
-    const componente = (loading) ? <Spinner></Spinner> : null;
+    const componente = (loading  ) ? <Spinner></Spinner> : null;
     return (
         <React.Fragment>
             {error
@@ -43,12 +41,13 @@ const Peliculas = () => {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col">
-                        <h3>All Movies </h3>
+                        <h3>Popular Movies</h3>
                         <Render peliculas={currentPeliculas} ></Render>
                         <Pagination
                             peliculasPerPage={peliculasPerPage}
                             totalPeliculas={peliculas.length}
                             paginate={paginate}
+                            currentPage = {currentPage}
                         />
                     </div>
                 </div>

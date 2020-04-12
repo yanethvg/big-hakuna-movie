@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerPeliculaActions } from '../../actions/obtenerPeliculaActions';
+import { obtenerPeliculasAllActions } from '../../actions/obtenerPeliculasAllActions';
 import { URL_BASE_IMG } from '../../types';
 import Spinner from '../Spinner';
 
@@ -9,14 +10,12 @@ const Show = ({ history, match }) => {
     const id = match.params.id;
     // Mandar llamar a la acción principal para retornar los peliculas
     const dispatch = useDispatch();
-
-
     useEffect(
         () => {
             //peliculas cuando el componente este listo
             const cargarpelicula = () => dispatch(obtenerPeliculaActions(id));
             cargarpelicula();
-        }, [dispatch]
+        }, [dispatch, id]
     );
     //Acceder al state
     const loading = useSelector(state => state.peliculaReducer.loading);
@@ -40,8 +39,6 @@ const Show = ({ history, match }) => {
                     <div className="col-md-6">
                         <h4>{pelicula.title}</h4>
                         <p>{pelicula.overview}</p>
-                       
-                        
                     </div>
                 </div>
             </div>

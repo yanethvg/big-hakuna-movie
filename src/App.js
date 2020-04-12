@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Inicio from "./components/Inicio";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import Peliculas from "./components/Peliculas";
+import PeliculasPop from "./components/PeliculasPop";
 import Show from "./components/Peliculas/Show";
 
 const App = () => (
@@ -11,8 +11,8 @@ const App = () => (
       <Header></Header>
       <Switch>
         <Route exact path="/" component={Inicio}></Route>
-        <Route exact path="/movies" component={Peliculas}></Route>
-        <Route exact path="/movie/:id" component={Show}></Route>
+        <Route exact path="/moviespop" component={PeliculasPop}></Route>
+        <Route exact path="/movies/:id" component={Show}></Route>
       </Switch>
       <Footer></Footer>
      

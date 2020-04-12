@@ -5,11 +5,11 @@ import {
 } from '../types';
 
 //obtener listado de productos( consultar API )
-export function obtenerPeliculasAllActions(){
+export function obtenerPeliculasAllActions(page){
     return (dispatch) => {
         dispatch(comenzarDescargaAllPeliculas());
         //consultando a la api
-        fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=510e5395ceb2e557cf3fb72141932029&language=en-US')
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=510e5395ceb2e557cf3fb72141932029&language=en-US&page=1`)
         .then(function(response) {
             return response.json();
         })
@@ -21,6 +21,7 @@ export function obtenerPeliculasAllActions(){
             //console.log(error);
             dispatch(descargaPeliculasAllError());
         });
+        
     }
 }
 export const comenzarDescargaAllPeliculas = () =>({

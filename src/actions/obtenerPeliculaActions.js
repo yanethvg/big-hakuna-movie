@@ -9,12 +9,12 @@ export function obtenerPeliculaActions(id){
     return (dispatch) => {
         dispatch(comenzarDescargaPelicula());
         //consultando a la api
-        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=510e5395ceb2e557cf3fb72141932029&language=en-US&page=1`)
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=510e5395ceb2e557cf3fb72141932029`)
         .then(function(response) {
             return response.json();
         })
         .then(function(response) {
-            //console.log(response);
+            console.log(response);
             dispatch(descargaPeliculaExitosa(response));
         })
         .catch(error => {

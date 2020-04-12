@@ -1,6 +1,6 @@
 import React from 'react';
 import { URL_BASE_IMG, URL_BASE_IMG_DESCRIPCION } from '../../types';
-import Show from './Show';
+import { Link } from 'react-router-dom'
 
 const Pelicula = ({ pelicula }) => {
     return (
@@ -12,7 +12,7 @@ const Pelicula = ({ pelicula }) => {
                     <p className="card-text">{pelicula.overview.substring(0, 50)}...</p>
                     <p className="card-text"><small className="text-muted">Release: {pelicula.release_date}</small></p>
                 </div>
-                <button type="button" className="btn btn-info " data-toggle="modal" data-target="#myModal">See More</button>
+                <Link to={`/movies/${pelicula.id}`} type="button" className="btn btn-info ">See More</Link>
             </div>
         </React.Fragment>
     );
