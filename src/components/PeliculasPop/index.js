@@ -47,7 +47,6 @@ const Peliculas = () => {
                             peliculasPerPage={peliculasPerPage}
                             totalPeliculas={peliculas.length}
                             paginate={paginate}
-                            currentPage = {currentPage}
                         />
                     </div>
                 </div>
