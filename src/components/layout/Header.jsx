@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Carrito from '../Carrito';
 const Header = () => {
   return (
     <nav className=" navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,7 +24,9 @@ const Header = () => {
             <Link to={'/moviesquery'} className="nav-link"> Search Movies<span className="sr-only">(current)</span></Link>
           </li>
         </ul>
-        
+        <div className="my-2 my-lg-0">
+          <Carrito></Carrito>
+        </div>
       </div>
       </div>
     </nav>

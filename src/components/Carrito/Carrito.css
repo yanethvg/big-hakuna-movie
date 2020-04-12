@@ -1,0 +1,50 @@
+.carrito-compras {
+    position: relative;
+}
+
+.carrito-compras .contenido {
+    display: none;
+}
+
+.carrito-compras:hover .contenido {
+    display: block;
+    position: absolute;
+    right: 0;
+    background-color: #FFFFFF;
+    padding: 1rem;
+    width: 400px;
+    z-index: 5;
+}
+
+.carrito-compras:hover .contenido .boton {
+    background-color: black;
+    padding: .5rem 1rem;
+    display: block;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.button-custom {
+    background-color: white;
+    border-color: black;
+    color: black;
+}
+
+.button-custom:hover {
+    background-color: black;
+    border-color: white;
+    color: white;
+}
+
+.button-custom-vaciar {
+    background-color: white;
+    border-color: gray;
+    color: gray;
+}
+
+.button-custom-vaciar:hover {
+    background-color: gray;
+    border-color: white;
+    color: white;
+}
