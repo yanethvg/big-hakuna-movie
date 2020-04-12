@@ -1,0 +1,37 @@
+.stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+    font-size: 50px;
+}
+
+.stars-outer::before {
+    content: '\f006 \f006 \f006 \f006 \f006';
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    font-size: 50px;
+}
+
+.stars-inner::before {
+    content: '\f005 \f005 \f005 \f005 \f005';
+    color: #f8ce0b;
+}
+
+.people {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+    font-size: 50px;
+}
+
+.people::before {
+    content: '\f0c0 \f0c0 \f0c0 \f0c0 \f0c0';
+    color: #b10e0e;
+}

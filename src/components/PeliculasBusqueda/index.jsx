@@ -44,7 +44,7 @@ const Peliculas = () => {
                 <h3>All Movies</h3>
                 <form className="row mb-2 justify-content-center">
                         <div className="col-sm-8">
-                            <input nameName='search' class="form-control" type="text"   placeholder="Search" aria-label="Search" 
+                            <input className='search form-control'  type="text"   placeholder="Search" aria-label="Search" 
                             onChange={e => saveQuery(e.target.value)}/>
                         </div>
                 </form>

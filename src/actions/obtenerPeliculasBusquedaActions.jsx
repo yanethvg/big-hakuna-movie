@@ -24,11 +24,11 @@ export function obtenerPeliculasBusquedaActions(query){
             return response.json();
         })
         .then(function(response) {
-            console.log(response.results);
+            //console.log(response.results);
             dispatch(descargaPeliculaBusquedaExitosa(response.results));
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
             dispatch(descargaPeliculaBusquedaError());
         });
     }
