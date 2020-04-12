@@ -17,7 +17,7 @@ const Header = () => {
             <Link to={'/moviespop'} className="nav-link">Popular Movies<span className="sr-only">(current)</span></Link>
           </li>
           <li className="nav-item">
-            <Link to={'/movieslast'} className="nav-link">Lastest Movies<span className="sr-only">(current)</span></Link>
+            <Link to={'/moviesplay'} className="nav-link"> Now Playing Movies<span className="sr-only">(current)</span></Link>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { obtenerPeliculasActions } from '../../actions/obtenerPeliculasActions';
-import { obtenerPeliculasPlayingActions } from '../../actions/obtenerPeliculasPlayingActions';
+import { obtenerPeliculasActions,obtenerPeliculasPlayingActions } from '../../actions/obtenerPeliculasActions';
 import Spinner from '../Spinner';
 import Pelicula from '../Peliculas/Pelicula';
 import { Link } from 'react-router-dom'
@@ -24,7 +23,7 @@ const Inicio= () => {
     const loading = useSelector(state => state.peliculasReducer.loading);
     const error = useSelector(state => state.peliculasReducer.error);
     const peliculasOcurrentes = useSelector(state => state.peliculasReducer.peliculasOcurrentes);
-    const peliculasPlaying = useSelector(state => state.peliculasPlayingReducer.peliculasPlaying);
+    const peliculasPlaying = useSelector(state => state.peliculasReducer.peliculasPlaying);
     //console.log(peliculasPlaying);
     const componente = (loading) ? <Spinner></Spinner> : null;
     return (
@@ -45,7 +44,7 @@ const Inicio= () => {
                             ></Pelicula>
                             ))}
                         </div>
-                        <Link  to={'/moviespop'}  type="button" className="btn btn-primary btn-lg btn-block mt-5">More Popular Movies</Link>
+                        <Link  to={'/moviespop'}  type="button" className="btn btn-outline-dark btn-lg btn-block mt-5">More Popular Movies</Link>
                     </div>
                 </div>
             </div>
@@ -61,7 +60,7 @@ const Inicio= () => {
                             ></Pelicula>
                             ))}
                         </div>
-                        <Link  to={'/moviespop'}  type="button" className="btn btn-primary btn-lg btn-block mt-5">More Popular Movies</Link>
+                        <Link  to={'/moviesplay'}  type="button" className="btn btn-outline-dark btn-lg btn-block mt-5">More Now Playing Movies</Link>
                     </div>
                 </div>
             </div>

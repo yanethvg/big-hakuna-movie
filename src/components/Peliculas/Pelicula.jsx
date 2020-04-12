@@ -12,7 +12,7 @@ const Pelicula = ({ pelicula }) => {
                     <p className="card-text">{pelicula.overview.substring(0, 50)}...</p>
                     <p className="card-text"><small className="text-muted">Release: {pelicula.release_date}</small></p>
                 </div>
-                <Link to={`/movies/${pelicula.id}`} type="button" className="btn btn-info ">See More</Link>
+                <Link to={`/movies/${pelicula.id}`} type="button" className="btn btn-outline-danger ">See More</Link>
             </div>
         </React.Fragment>
     );
