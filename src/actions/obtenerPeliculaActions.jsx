@@ -14,7 +14,7 @@ export function obtenerPeliculaActions(id){
             return response.json();
         })
         .then(function(response) {
-            console.log(response);
+           // console.log(response);
             dispatch(descargaPeliculaExitosa(response));
         })
         .catch(error => {

@@ -2,7 +2,7 @@
     display: inline-block;
     position: relative;
     font-family: FontAwesome;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .stars-outer::before {
@@ -16,7 +16,7 @@
     white-space: nowrap;
     overflow: hidden;
     width: 0;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .stars-inner::before {
@@ -28,10 +28,18 @@
     display: inline-block;
     position: relative;
     font-family: FontAwesome;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .people::before {
     content: '\f0c0 \f0c0 \f0c0 \f0c0 \f0c0';
-    color: #b10e0e;
+    color: #2E2EFE;
+}
+
+.movie {
+    list-style-image: url("../image/movie.png");
+}
+
+.language {
+    list-style-image: url("../image/language.png");
 }
