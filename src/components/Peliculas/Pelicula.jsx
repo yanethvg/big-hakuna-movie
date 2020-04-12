@@ -6,7 +6,10 @@ const Pelicula = ({ pelicula }) => {
     return (
         <React.Fragment>
             <div className="card">
-                <img src={`${URL_BASE_IMG}${pelicula.poster_path}`} className="card-img-top" alt="..." />
+                <img src={
+                     pelicula.poster_path 
+                        ? `${URL_BASE_IMG}${pelicula.poster_path}` 
+                        : 'https://via.placeholder.com/500?text=No+Image'} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{pelicula.title}</h5>
                     <p className="card-text">{pelicula.overview.substring(0, 50)}...</p>
