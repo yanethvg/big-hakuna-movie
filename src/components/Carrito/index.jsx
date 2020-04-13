@@ -42,10 +42,10 @@ const Carrito = () => {
                             ))}
                         </tbody>
                     </table>
-                    <h4 className="text-center">Total a pagar:  ${sum} </h4>
+                    <h4 className="text-center ">Total a pagar:  ${sum} </h4>
                     {peliculas.length > 0 &&
                         <React.Fragment>
-                            <button className="btn button-custom-vaciar btn-block" onClick={() => vaciarPeliculas()}>Empty Cart</button>
+                            <button className="btn button-custom-vaciar btn-block my-2" onClick={() => vaciarPeliculas()}>Empty Cart</button>
                             <Link to={'/confirmacion'} className="btn button-custom btn-block">Place Orders</Link>
                         </React.Fragment>
                     }

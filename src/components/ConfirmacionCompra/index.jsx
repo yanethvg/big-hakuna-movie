@@ -37,7 +37,7 @@ const Confirmacion = () => {
                     </div>
             }
             <Peliculas peliculas={currentPeliculas}></Peliculas>
-            <h4 className="text-center my-2">Total a Pagar: ${sum}</h4>
+            {peliculas.length > 0 &&<h4 className="text-center my-5">Total a Pagar: ${sum}</h4>}
             <Pagination
                 peliculasPerPage={peliculasPerPage}
                 totalPeliculas={peliculas.length}
