@@ -9,13 +9,6 @@ import img from '../image/found.png';
 
 const Peliculas = () => {
     // Mandar llamar a la acción principal para retornar los peliculas
-    //cargar las peliculas del localstorage como state inicial
-    let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
-
-    if (!peliculasIniciales) {
-        peliculasIniciales = []
-    }
-    const [peliculas, savePeliculas] = useState(peliculasIniciales)
     //state locales
     const [currentPage, setCurrentPage] = useState(1);
     const [peliculasPerPage] = useState(12);
@@ -26,24 +19,8 @@ const Peliculas = () => {
             //peliculas cuando el componente este listo
             const cargarpeliculas = () => dispatch(obtenerPeliculasBusquedaActions(query))
             cargarpeliculas();
-            //ESTO ES PARA STORAGE
-            let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
-
-            if (peliculasIniciales) {
-                localStorage.setItem('peliculas', JSON.stringify(peliculas))
-            } else {
-                localStorage.setItem('peliculas', JSON.stringify([]))
-            }
-        }, [dispatch, query, peliculas]
+        }, [dispatch, query]
     );
-
-    function crearInstancia(instancia) {
-        //Tomar una copia del state y agregar el nuevo paciente
-        const nuevasPeliculas = [...peliculas, instancia]
-        //almacenar en el state
-        savePeliculas(nuevasPeliculas)
-        console.log(nuevasPeliculas);
-    }
 
     //Acceder al state
     const loading = useSelector(state => state.peliculasBusquedaReducer.loading);
@@ -81,7 +58,7 @@ const Peliculas = () => {
                         Not Found
                     </div>
                         }
-                        <Render peliculas={currentPeliculas} crearInstancia={crearInstancia}></Render>
+                        <Render peliculas={currentPeliculas} ></Render>
                         <Pagination
                             peliculasPerPage={peliculasPerPage}
                             totalPeliculas={peliculasBusqueda.length}

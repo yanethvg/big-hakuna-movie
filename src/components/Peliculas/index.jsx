@@ -2,7 +2,7 @@ import React from 'react';
 import Pelicula from './Pelicula';
 import { v4 as uuidv4 } from 'uuid';
 
-const Peliculas = ({ peliculas,crearInstancia }) => {
+const Peliculas = ({ peliculas }) => {
     const totalPeliculas = peliculas.length;
     let comienzo = 0;
     let final =4;
@@ -25,7 +25,6 @@ const Peliculas = ({ peliculas,crearInstancia }) => {
                         <Pelicula
                             key={pelicula.id}
                             pelicula={pelicula}
-                            crearInstancia={crearInstancia}
                         ></Pelicula>
                     ))}
             </div>

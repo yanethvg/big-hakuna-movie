@@ -1,33 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux'
 import img from '../image/cart.png'
 import img2 from '../image/curso1.jpg';
 import { URL_BASE_IMG } from '../../types';
+import {vaciarPeliculaAction} from '../../actions/actualizarStorage';
 import './Carrito.css'
 
 const Carrito = () => {
-
-    // //cargar las peliculas del localstorage como state inicial
-    // let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'));
-
-    // if (!peliculasIniciales) {
-    //     peliculasIniciales = [];
-    // }
-    const [peliculas, savePeliculas] = useState([]);
-
-    //esto es como component didmount o didupdate
-
-
-    useEffect(
-        () => {
-            let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'));
-
-            if (peliculasIniciales) {
-                localStorage.setItem('peliculas', JSON.stringify(peliculas));
-                savePeliculas(peliculasIniciales);
-            }
-        }, []
-    )
-    console.log('estoy en carrito',peliculas);
+     //obtener las citas del state
+     const dispatch = useDispatch();
+     const peliculas = useSelector((state) => state.movies.movies);
+     const vaciarPeliculas = () => dispatch( vaciarPeliculaAction() );
+    // console.log(peliculas);
     return (
         <React.Fragment>
             <div className="carrito-compras">
@@ -42,17 +26,18 @@ const Carrito = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {peliculas && peliculas.map((pelicula, index) => (
-                                <tr key={index}>
-                                    <td>{pelicula.id}</td>
-                                    <td>{pelicula.titulo}</td>
-                                    <td>{pelicula.precio}</td>
-                                </tr>
-                            )
-                            )}
+                          {peliculas.map((pelicula,index )=> (
+                              <tr key={index}>
+                                  <td>
+                                      <img src={`${URL_BASE_IMG}${pelicula.img}`} alt="" width="50"/>
+                                  </td>
+                                  <td>{pelicula.titulo}</td>
+                                  <td>$ {pelicula.precio}</td>
+                              </tr>
+                          ))}
                         </tbody>
                     </table>
-                    <a href="/" className="btn button-custom-vaciar btn-block">Empty Cart</a>
+                    <button  className="btn button-custom-vaciar btn-block" onClick={() => vaciarPeliculas() }>Empty Cart</button>
                     <a href="/" className="btn button-custom btn-block">Place Orders</a>
                 </div>
             </div>

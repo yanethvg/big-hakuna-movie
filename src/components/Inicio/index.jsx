@@ -11,12 +11,6 @@ import { Link } from 'react-router-dom'
 
 const Inicio = () => {
     //cargar las peliculas del localstorage como state inicial
-    let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
-
-    if (!peliculasIniciales) {
-        peliculasIniciales = []
-    }
-    const [peliculas, savePeliculas] = useState(peliculasIniciales)
     const dispatch = useDispatch()
     useEffect(() => {
         //peliculas cuando el componente este listo
@@ -26,23 +20,8 @@ const Inicio = () => {
             dispatch(obtenerPeliculasPlayingActions())
         cargarpeliculas()
         cargarpeliculasplaying()
-        //ESTO ES PARA STORAGE
-        let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
-
-        if (peliculasIniciales) {
-            localStorage.setItem('peliculas', JSON.stringify(peliculas))
-        } else {
-            localStorage.setItem('peliculas', JSON.stringify([]))
-        }
-    }, [dispatch, peliculas])
-
-    function crearInstancia(instancia){
-        //Tomar una copia del state y agregar el nuevo paciente
-        const nuevasPeliculas = [...peliculas, instancia]
-        //almacenar en el state
-        savePeliculas(nuevasPeliculas) 
-        console.log(nuevasPeliculas);
-    }
+       
+    }, [dispatch])
     //Acceder al state
     const loading = useSelector(state => state.peliculasReducer.loading)
     const error = useSelector(state => state.peliculasReducer.error)
@@ -70,7 +49,7 @@ const Inicio = () => {
                                 <Pelicula
                                     key={pelicula.id}
                                     pelicula={pelicula}
-                                    crearInstancia={crearInstancia}
+                                  
                                 ></Pelicula>
                             ))}
                         </div>

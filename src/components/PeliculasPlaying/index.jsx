@@ -8,13 +8,6 @@ import Pagination from '../Peliculas/Pagination';
 
 const Peliculas = () => {
     // Mandar llamar a la acción principal para retornar los peliculas
-    //cargar las peliculas del localstorage como state inicial
-    let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
-
-    if (!peliculasIniciales) {
-        peliculasIniciales = []
-    }
-    const [peliculas, savePeliculas] = useState(peliculasIniciales)
     //state locales
     const [currentPage, setCurrentPage] = useState(1);
     const [peliculasPerPage] = useState(12);
@@ -24,24 +17,9 @@ const Peliculas = () => {
             //peliculas cuando el componente este listo
             const cargarpeliculas = () => dispatch(obtenerPeliculasPlayingAllActions());
             cargarpeliculas();
-            //ESTO ES PARA STORAGE
-            let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'))
-
-            if (peliculasIniciales) {
-                localStorage.setItem('peliculas', JSON.stringify(peliculas))
-            } else {
-                localStorage.setItem('peliculas', JSON.stringify([]))
-            }
-        }, [dispatch, peliculas]
+            
+        }, [dispatch]
     );
-
-    function crearInstancia(instancia) {
-        //Tomar una copia del state y agregar el nuevo paciente
-        const nuevasPeliculas = [...peliculas, instancia]
-        //almacenar en el state
-        savePeliculas(nuevasPeliculas)
-        console.log(nuevasPeliculas);
-    }
 
     //Acceder al state
     const loading = useSelector(state => state.peliculasPlayingReducer.loading);
@@ -66,7 +44,7 @@ const Peliculas = () => {
                 <div className="row">
                     <div className="col">
                         <h3>Now Playing Movies</h3>
-                        <Render peliculas={currentPeliculas} crearInstancia={crearInstancia}></Render>
+                        <Render peliculas={currentPeliculas} ></Render>
                         <Pagination
                             peliculasPerPage={peliculasPerPage}
                             totalPeliculas={peliculasPlaying.length}
