@@ -8,12 +8,12 @@ import { obtenerStorage,guardarStateStorage } from './localStorage';
 const storageState = obtenerStorage();
 const middleware = [thunk];
 
+//window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const store = createStore(
     rootReducers,
     storageState,
-    compose(applyMiddleware(...middleware),
-            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    compose(applyMiddleware(...middleware)
 ));
 //esto es detectar los cambios acceder  a los cambios
 store.subscribe( () => {
