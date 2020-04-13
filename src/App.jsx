@@ -11,17 +11,16 @@ import Confirmacion from './components/ConfirmacionCompra';
 
 const App = () => (
   <Router>
-      <Header></Header>
-      <Switch>
-        <Route exact path="/" component={Inicio}></Route>
-        <Route exact path="/moviespop" component={PeliculasPop}></Route>
-        <Route exact path="/moviesplay" component={PeliculasPlaying}></Route>
-        <Route exact path="/moviesquery" component={PeliculasSearch}></Route>
-        <Route exact path="/movies/:id" component={Show}></Route>
-        <Route exact path="/confirmacion" component={Confirmacion}></Route>
-      </Switch>
-      <Footer></Footer>
-     
+    <Header></Header>
+    <Switch>
+      <Route exact path="/" component={Inicio}></Route>
+      <Route exact path="/moviespop" component={PeliculasPop}></Route>
+      <Route exact path="/moviesplay" component={PeliculasPlaying}></Route>
+      <Route exact path="/moviesquery" component={PeliculasSearch}></Route>
+      <Route exact path="/movies/:id" component={Show}></Route>
+      <Route exact path="/confirmacion" component={Confirmacion}></Route>
+    </Switch>
+    <Footer></Footer>
   </Router>
 );
 

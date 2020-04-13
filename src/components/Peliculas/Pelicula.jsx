@@ -9,13 +9,14 @@ const Pelicula = ({ pelicula}) => {
     const dispatch = useDispatch();
     const agregarNuevaPelicula = pelicula => dispatch( agregarPeliculaAction(pelicula) );
     //const peliculas = useSelector((state) => state.movies.movies);
+    let random = Math.floor(Math.random()*(20-10+1)+10);
     const guardarReferencia = (pelicula) => {
         const storage ={
             id: pelicula.id,
             img: pelicula.poster_path,
             titulo: pelicula.title,
             descripcion: pelicula.overview,
-            precio: 15,
+            precio: random,
         }
         //console.log(storage);
         agregarNuevaPelicula(storage);

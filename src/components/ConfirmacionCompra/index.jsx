@@ -28,10 +28,12 @@ const Confirmacion = () => {
         return acu + parseFloat(precio_individual)
     }, 0)
     return (
-        <div className='container'>
+        <div className='container' style={{height: '100vh'}}>
             {peliculas.length === 0
                 &&
-                <div className="text-center mt-5">
+                <div className="text-center mt-5" style={{
+                    height: '100vh'
+                }}>
                     <img src={img} alt="" /><br />
                         Good
                     </div>

@@ -12,6 +12,7 @@ const Peliculas = ({ peliculas }) => {
                          className='card border-dark mt-3'
                          style={{ boxShadow: '10px 10px 5px grey' }}
                          key={index}
+                         
                      >
                          <div className='card-body'>
                              <div className='container'>
@@ -30,7 +31,7 @@ const Peliculas = ({ peliculas }) => {
                                      <div className='col-sm-8'>
                                          <h3>{pelicula.titulo}</h3>
                                          <h4>Precio: ${pelicula.precio}</h4>
-                                         <p>{pelicula.descripcion}</p>
+                                         <p>{pelicula.descripcion.substring(0,90)} ...</p>
                                      </div>
                                  </div>
                              </div>

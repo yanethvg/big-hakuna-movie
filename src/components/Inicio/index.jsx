@@ -75,10 +75,10 @@ const Inicio = () => {
                         <Link
                             to={'/moviesplay'}
                             type='button'
-                            className='btn btn-outline-dark btn-lg btn-block mt-5'
+                            className='btn btn-outline-dark btn-lg btn-block my-5'
                         >
                             More Now Playing Movies
-            </Link>
+                        </Link>
                     </div>
                 </div>
             </div>

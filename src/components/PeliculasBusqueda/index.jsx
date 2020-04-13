@@ -50,10 +50,12 @@ const Peliculas = () => {
                     </div>
                 </form>
                 <div className="row">
-                    <div className="col">
+                    <div className="col"  >
                         {(peliculasBusqueda.length === 0 && !loading)
                             &&
-                            <div className="text-center">
+                            <div className="text-center" style={{
+                                height: '100vh'
+                            }}>
                                 <img src={img} alt="" /><br />
                         Not Found
                     </div>
