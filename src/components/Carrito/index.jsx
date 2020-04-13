@@ -16,6 +16,7 @@ const Carrito = () => {
         let precio_individual = parseFloat(val.precio);
         return acu + parseFloat(precio_individual)
     }, 0)
+    
     return (
         <React.Fragment>
             <div className="carrito-compras ">
