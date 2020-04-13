@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import img from '../image/cart.png'
 import img2 from '../image/curso1.jpg';
+import { URL_BASE_IMG } from '../../types';
 import './Carrito.css'
 
 const Carrito = () => {
 
-    //cargar las peliculas del localstorage como state inicial
-    let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'));
+    // //cargar las peliculas del localstorage como state inicial
+    // let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'));
 
-    if (!peliculasIniciales) {
-        peliculasIniciales = [];
-    }
-    const [peliculas, savePeliculas] = useState(peliculasIniciales);
+    // if (!peliculasIniciales) {
+    //     peliculasIniciales = [];
+    // }
+    const [peliculas, savePeliculas] = useState([]);
 
     //esto es como component didmount o didupdate
+
+
     useEffect(
         () => {
             let peliculasIniciales = JSON.parse(localStorage.getItem('peliculas'));
 
             if (peliculasIniciales) {
                 localStorage.setItem('peliculas', JSON.stringify(peliculas));
-            } else {
-                localStorage.setItem('peliculas', JSON.stringify([]));
+                savePeliculas(peliculasIniciales);
             }
-        }, [peliculas]
+        }, []
     )
-    console.log(peliculas);
+    console.log('estoy en carrito',peliculas);
     return (
         <React.Fragment>
             <div className="carrito-compras">
@@ -34,19 +36,20 @@ const Carrito = () => {
                     <table id="lista-carrito" >
                         <thead>
                             <tr>
-                                <th>Imagen</th>
-                                <th>Nombre</th>
-                                <th>Precio</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Price</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <img src={img2} alt="" width="90" />
-                                </td>
-                                <td>CSS Grid y Flexbox Construye + 10 Proyectos</td>
-                                <td>$15</td>
-                            </tr>
+                            {peliculas && peliculas.map((pelicula, index) => (
+                                <tr key={index}>
+                                    <td>{pelicula.id}</td>
+                                    <td>{pelicula.titulo}</td>
+                                    <td>{pelicula.precio}</td>
+                                </tr>
+                            )
+                            )}
                         </tbody>
                     </table>
                     <a href="/" className="btn button-custom-vaciar btn-block">Empty Cart</a>
