@@ -33,5 +33,20 @@ Después de cumplir todos los requisitos se debe instalar.
     ```
 
 ### Vista de Inicio
-Se muestran las primeras peliculas
-![alt text](https://res.cloudinary.com/dgi2nmgsy/image/upload/v1583887524/admin_j8opyh.jpg)
+![alt text](https://github.com/yaneth94/Big_Hakuna_Movie/blob/master/public/assets/images/Inicio.png)
+
+
+### Vista de Peliculas Populares
+![alt text](https://github.com/yaneth94/Big_Hakuna_Movie/blob/master/public/assets/images/Popular.png)
+
+### Vista de Peliculas Busqueda
+![alt text](https://github.com/yaneth94/Big_Hakuna_Movie/blob/master/public/assets/images/Busqueda.png)
+
+### Vista de detalle de Pelicula
+![alt text](https://github.com/yaneth94/Big_Hakuna_Movie/blob/master/public/assets/images/Show.png)
+
+### Carrito de Compra
+![alt text](https://github.com/yaneth94/Big_Hakuna_Movie/blob/master/public/assets/images/Carrito.jpg)
+
+### Vista de Confirmación de Compra
+![alt text](https://github.com/yaneth94/Big_Hakuna_Movie/blob/master/public/assets/images/confirmacion.png)
