@@ -7,6 +7,7 @@ import PeliculasPop from "./components/PeliculasPop";
 import PeliculasPlaying from "./components/PeliculasPlaying";
 import PeliculasSearch from "./components/PeliculasBusqueda";
 import Show from "./components/Peliculas/Show";
+import Confirmacion from './components/ConfirmacionCompra';
 
 const App = () => (
   <Router>
@@ -17,6 +18,7 @@ const App = () => (
         <Route exact path="/moviesplay" component={PeliculasPlaying}></Route>
         <Route exact path="/moviesquery" component={PeliculasSearch}></Route>
         <Route exact path="/movies/:id" component={Show}></Route>
+        <Route exact path="/confirmacion" component={Confirmacion}></Route>
       </Switch>
       <Footer></Footer>
      

@@ -1,5 +1,5 @@
-import React,{useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import {agregarPeliculaAction} from '../../actions/actualizarStorage';
 import { URL_BASE_IMG} from '../../types';
 import { Link } from 'react-router-dom'
@@ -8,12 +8,13 @@ const Pelicula = ({ pelicula}) => {
    // console.log(crearInstancia);
     const dispatch = useDispatch();
     const agregarNuevaPelicula = pelicula => dispatch( agregarPeliculaAction(pelicula) );
-    const peliculas = useSelector((state) => state.movies.movies);
+    //const peliculas = useSelector((state) => state.movies.movies);
     const guardarReferencia = (pelicula) => {
         const storage ={
             id: pelicula.id,
             img: pelicula.poster_path,
             titulo: pelicula.title,
+            descripcion: pelicula.overview,
             precio: 15,
         }
         //console.log(storage);
